@@ -1,0 +1,21 @@
+{{log("eval container")&&undefined}}
+
+<input type=text>
+<div style="border: 1px solid blue; margin:10px;">
+        
+    <div *ngFor="let sub of model.controls??[]; trackBy: tracker">        
+        <ng-container [ngSwitch]="sub.type" >   
+            <ng-container *ngSwitchCase="'c'">
+                <app-x-container [model]="sub" [parent]="this">
+                </app-x-container>
+            </ng-container>        
+            <ng-container *ngSwitchCase="'l'">
+                <app-x-label [model]="sub" [parent]="this">
+                </app-x-label>
+            </ng-container>        
+        </ng-container>
+    </div>
+    <app-x-label [model]="{}" [parent]="this">
+    </app-x-label>
+</div>
+  
